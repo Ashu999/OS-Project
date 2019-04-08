@@ -16,39 +16,7 @@ struct STUDENT{
 };
 struct STUDENT s[3];
 
-int executeStudent()
-{
-    int indexPosition;
-    while (1)
-    {
-         int largest = 0;
-         for (int i = 0; i < 3; i++)
-         {
-              if (s[i].burstTime == s[largest].burstTime)
-              {
-                if(s[i].studentID < s[largest].studentID) {largest = i;}
-              }
-              if (s[i].burstTime > s[largest].burstTime) {largest = i;}
-          }
-        indexPosition = largest;
-
-        cout <<s[indexPosition].studentName<<" StudentID: " << s[indexPosition].studentID << " Time: " <<  totaltime;
-        s[indexPosition].burstTime--;
-
-        totaltime++;
-
-        if (s[indexPosition].burstTime == 0)
-        {
-            cout<<'\n';
-            s[indexPosition].completionTime = totaltime;
-            cout<<"  "<<s[indexPosition].studentName<<" StudentID: "<< s[indexPosition].studentID << " Finished. Time: " << totaltime;
-        }
-        cout<<'\n';
-
-        if (totaltime == burstTimeSum)
-            break;
-    }
-}
+int executeStudent();
 
 int main()
 {
@@ -104,4 +72,38 @@ int main()
     cout <<'\n'<<"Average turnAroundTime = " << totalturnAroundTime / 3.0 << '\n';
     cout <<'\n'<<"Average waitingTime = " << totalwaitingTime / 3.0 << '\n';
     return 0;
+}
+
+int executeStudent()
+{
+    int indexPosition;
+    while (1)
+    {
+         int largest = 0;
+         for (int i = 0; i < 3; i++)
+         {
+              if (s[i].burstTime == s[largest].burstTime)
+              {
+                if(s[i].studentID < s[largest].studentID) {largest = i;}
+              }
+              if (s[i].burstTime > s[largest].burstTime) {largest = i;}
+          }
+        indexPosition = largest;
+
+        cout <<s[indexPosition].studentName<<" StudentID: " << s[indexPosition].studentID << " Time: " <<  totaltime;
+        s[indexPosition].burstTime--;
+
+        totaltime++;
+
+        if (s[indexPosition].burstTime == 0)
+        {
+            cout<<'\n';
+            s[indexPosition].completionTime = totaltime;
+            cout<<"  "<<s[indexPosition].studentName<<" StudentID: "<< s[indexPosition].studentID << " Finished. Time: " << totaltime;
+        }
+        cout<<'\n';
+
+        if (totaltime == burstTimeSum)
+            break;
+    }
 }
